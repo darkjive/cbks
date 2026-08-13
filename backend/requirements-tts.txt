@@ -1,0 +1,15 @@
+# Optionale TTS-Abhaengigkeiten (Vorlesefunktion, GET /nodes/{id}/audio).
+#
+# Installation zusaetzlich zu backend/requirements.txt:
+#   pip install -r backend/requirements-tts.txt
+#
+# ACHTUNG: benoetigt Python <3.13 — der Kokoro-Fork haengt an "misaki", das
+# aktuell kein Python 3.13 unterstuetzt. Der CBKS-Kern laeuft auf 3.11-3.13.
+#
+# Zusaetzlich noetig (Systempakete, kein pip): espeak-ng, ffmpeg
+-r requirements.txt
+
+# Kokoro-German-Fork (Paketname "kokoro" 0.9.4, ergaenzt lang_code 'd' via espeak)
+kokoro @ git+https://github.com/Thomcle/kokoro_german@81b2747c15a7f0f6092b3efb1971d91e2b498467
+soundfile==0.13.1
+huggingface_hub==0.36.2

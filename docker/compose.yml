@@ -1,0 +1,25 @@
+services:
+  cbks-backend:
+    build:
+      context: ..
+      dockerfile: backend/Dockerfile
+    container_name: cbks-backend
+    # Host-Networking bleibt bewusst: natives Ollama lauscht nur auf 127.0.0.1:11434
+    # und waere ueber ein Bridge-Netzwerk nicht erreichbar, ohne die
+    # Ollama-Konfiguration auf dem Host zu aendern.
+    network_mode: host
+    volumes:
+      - ${CBKS_DATA_DIR:-../data}:/data
+    environment:
+      - OLLAMA_HOST=${OLLAMA_HOST:-http://127.0.0.1:11434}
+      - CBKS_DATA_DIR=/data
+      - CBKS_DATABASE_PATH=/data/cbks.db
+      - CBKS_FAISS_PATH=/data/faiss_index/index.faiss
+      - CBKS_BACKUP_SCRIPT=/data/backup.sh
+      - CBKS_API_KEY=${CBKS_API_KEY:-}
+    restart: unless-stopped
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"

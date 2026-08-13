@@ -1,0 +1,19 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+data/
+*.db
+*.log
+.env
+*.egg-info/
+.superpowers/
+
+# Playwright-MCP Debug-Artefakte (Screenshots/Konsolen-Logs aus UI-Tests)
+.playwright-mcp/
+/*.png
+
+# Lokale Agent-/Editor-Konfiguration (entwicklerspezifisch, nicht projektbezogen)
+.opencode/
+.claude/
+.pytest_cache/

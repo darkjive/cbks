@@ -1,0 +1,48 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+# Versionen aktualisiert ggü. Plan-Vorgabe (2026-07-04): faiss-cpu==1.8.0 existiert nicht mehr auf PyPI, alle Pins auf aktuell neueste stabile Version gebracht.
+# Core
+fastapi==0.139.0
+uvicorn==0.50.0
+pydantic==2.13.4
+python-multipart==0.0.32
+typer==0.26.8                    # CLI – NEU
+
+# Graph
+networkx==3.6.1
+# sqlite3: Standardbibliothek, KEIN pip-Paket
+# asyncio: Standardbibliothek, KEIN pip-Paket
+
+# Vektorsuche
+faiss-cpu==1.14.3
+# Hinweis: faiss-gpu existiert nur für CUDA (NVIDIA).
+# Für die RX 6900 XT (ROCm) ist faiss-cpu die richtige Wahl –
+# der Ryzen 9 5900X ist für persönliche Datenmengen mehr als ausreichend.
+
+# LLM & Embeddings – beides über Ollama (ein Inferenz-Stack)
+ollama==0.6.2
+# bge-m3 wird als Ollama-Modell geladen, nicht als pip-Paket:
+#   ollama pull bge-m3
+
+# Parsing
+pymupdf==1.28.0
+markdown==3.10.2
+beautifulsoup4==4.15.0
+
+# Sentiment – deutsches BERT-Modell (zieht torch + transformers).
+# Fällt bei Nichtverfügbarkeit auf die LLM-Sentiment-Schätzung zurück
+# (siehe backend/services/sentiment.py: HybridSentiment).
+germansentiment==1.1.0
+
+# Monitoring & Utils
+apscheduler==3.11.3
+python-json-logger==4.1.0
+httpx==0.28.1
+
+# Testing
+pytest==9.1.1
+
+# TTS ist OPTIONAL und liegt in backend/requirements-tts.txt:
+#   pip install -r backend/requirements-tts.txt
+# Grund fuer die Trennung: der Kokoro-Fork zieht "misaki", das kein Python 3.13
+# unterstuetzt. Waeren die Pakete hier, liesse sich CBKS auf 3.13 gar nicht
+# installieren. Ohne TTS antwortet nur GET /nodes/{id}/audio mit 503.

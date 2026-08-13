@@ -1,0 +1,68 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  backend:
+    name: Backend (Python ${{ matrix.python-version }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # 3.13 ist bewusst dabei: der CBKS-Kern muss ohne die optionalen
+        # TTS-Abhaengigkeiten (misaki hat kein 3.13) durchlaufen.
+        python-version: ["3.11", "3.12", "3.13"]
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: pip
+          cache-dependency-path: backend/requirements.txt
+
+      # Installiert bewusst die vollstaendige requirements.txt: der Job ist damit
+      # zugleich der Beleg, dass die im README dokumentierte Installation wirklich
+      # von Null aus durchlaeuft.
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r backend/requirements.txt
+
+      # Die Tests mocken Ollama und isolieren Daten via CBKS_DATA_DIR – es wird
+      # weder ein laufendes Ollama noch ein Modell-Download gebraucht.
+      - name: Run tests
+        run: pytest backend/tests -q
+
+  frontend:
+    name: Frontend
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      # "npm run build" ist zugleich der Typecheck-Gate (tsc -b && vite build).
+      - name: Typecheck & build
+        run: npm run build

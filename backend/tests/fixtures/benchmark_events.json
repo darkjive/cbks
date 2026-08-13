@@ -1,0 +1,27 @@
+[
+  {
+    "event_type": "document.added",
+    "label": "PDF",
+    "text": "Titel: Grundlagen der Graphentheorie. Abschnitt 3.2 behandelt gerichtete azyklische Graphen (DAGs) und deren Anwendung in Abhängigkeitsauflösung. Autor: J. Klein, veröffentlicht 2024 im Rahmen der Vorlesung Diskrete Strukturen an der TU Berlin."
+  },
+  {
+    "event_type": "commit.ingested",
+    "label": "Git-Commit",
+    "text": "commit 4f2a9c1\nAuthor: Al Ain\nfix(faiss): remove_ids schlägt bei leerem Index fehl\n\nIndexIDMap.remove_ids() wirft AssertionError, wenn der Index noch keine Vektoren enthält. Guard-Klausel ergänzt, die den Aufruf überspringt, falls ntotal == 0."
+  },
+  {
+    "event_type": "note.created",
+    "label": "Notiz",
+    "text": "Idee für später: Emotionale Gewichtung von Notizen automatisch aus Wortwahl schätzen, bevor der Nutzer sie manuell setzen muss. Ggf. german-sentiment-bert dafür wiederverwenden, das ohnehin für Phase 3 geplant ist."
+  },
+  {
+    "event_type": "document.added",
+    "label": "Webseite",
+    "text": "Ollama Blog: 'Running multiple models concurrently'. OLLAMA_MAX_LOADED_MODELS steuert, wie viele Modelle gleichzeitig im VRAM gehalten werden. Bei knappem VRAM empfiehlt sich ein Wert von 1, bei ausreichend Reserve (>12 GB) sind 2-3 Modelle parallel möglich."
+  },
+  {
+    "event_type": "screenshot.added",
+    "label": "Screenshot-Beschreibung",
+    "text": "Screenshot eines VS-Code-Fensters: Terminal zeigt 'pytest tests/ -v', 8 Tests bestanden, 1 übersprungen ('test_gpu_only: no ROCm device'). Linkes Panel zeigt geöffnete Datei event_log.py mit der Funktion append()."
+  }
+]
