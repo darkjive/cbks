@@ -17,3 +17,8 @@ data/
 .opencode/
 .claude/
 .pytest_cache/
+CLAUDE.md
+AGENTS.md
+GEMINI.md
+.vscode/
+.idea/
