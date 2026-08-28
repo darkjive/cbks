@@ -1,14 +1,14 @@
 <div align="center">
 
-# CBKS
+# Synapse
 
-**Cognitive Brain Knowledge System — ein hirninspiriertes Wissensnervensystem.**
+**Ein hirninspiriertes Wissensnervensystem** _(vormals CBKS — Cognitive Brain Knowledge System)_.
 
 _Wissen ist keine Ordnerstruktur, sondern ein Netz aus Beziehungen, Zeit und Gewichtung._
 
 Python (FastAPI + Typer) · React/TS + Vite · SQLite + FAISS · Ollama (lokal) · local-first · DE
 
-[![CI](https://github.com/darkjive/cbks/actions/workflows/ci.yml/badge.svg)](https://github.com/darkjive/cbks/actions/workflows/ci.yml)
+[![CI](https://github.com/darkjive/Synapse/actions/workflows/ci.yml/badge.svg)](https://github.com/darkjive/Synapse/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 

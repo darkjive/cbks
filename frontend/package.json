@@ -1,8 +1,8 @@
 {
-  "name": "cbks-frontend",
+  "name": "synapse-frontend",
   "private": true,
   "version": "0.1.0",
-  "description": "React/Three.js-Frontend für CBKS — 3D-Graphansicht des Wissensnetzes",
+  "description": "React/Three.js-Frontend für Synapse — 3D-Graphansicht des Wissensnetzes",
   "license": "MIT",
   "type": "module",
   "scripts": {
