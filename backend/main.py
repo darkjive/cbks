@@ -74,6 +74,13 @@ async def lifespan(app: FastAPI):
     # Index-Staenden (Single-Writer-Annahme, siehe Plan-Dokument).
     ctx = build_context(check_same_thread=False)
     app.state.ctx = ctx
+    if not ctx.config.api_key:
+        logger.warning(
+            "CBKS_API_KEY ist nicht gesetzt — die API laeuft ohne Authentifizierung. "
+            "Nur unbedenklich, solange ausschliesslich auf 127.0.0.1 gebunden wird "
+            "(siehe SECURITY.md); bei jeder Weiterleitung/Exposition nach aussen "
+            "CBKS_API_KEY setzen."
+        )
     abort_unfinished_jobs(ctx.conn)
     yield
     ctx.conn.close()
