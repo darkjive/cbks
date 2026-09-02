@@ -34,7 +34,7 @@ def test_request_middleware_logs_method_path_status(tmp_path, monkeypatch, caplo
         with caplog.at_level(logging.INFO, logger="cbks.api"):
             client.get("/stats")
 
-    record = next(r for r in caplog.records if r.name == "cbks.api")
+    record = next(r for r in caplog.records if r.name == "cbks.api" and r.getMessage() == "request")
     assert record.method == "GET"
     assert record.path == "/stats"
     assert record.status == 200
