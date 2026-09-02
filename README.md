@@ -128,8 +128,17 @@ make build    # tsc -b + vite build
 make check    # alle drei
 ```
 
-Wer lieber ohne `make` arbeitet, findet die entsprechenden Einzelbefehle in
-[`AGENTS.md`](./AGENTS.md).
+Wer lieber ohne `make` arbeitet:
+
+```bash
+# Backend
+.venv/bin/pytest                                                 # Tests (kein Linter/Typecheck konfiguriert)
+.venv/bin/uvicorn backend.main:app --host 127.0.0.1 --port 8000  # Server
+
+# Frontend (in frontend/)
+npm run build   # tsc -b && vite build — das ist der Typecheck-Gate
+npm run lint    # oxlint (kein Test-Suite fürs Frontend)
+```
 
 ### Optional: Vorlesefunktion (TTS)
 
