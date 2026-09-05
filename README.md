@@ -241,9 +241,7 @@ CBKS ist ein laufendes Experiment. Was als Nächstes ansteht:
 | **Code-Splitting im Frontend** | Der Bundle liegt bei ~1,4 MB (418 kB gzip) — three.js dominiert. |
 
 Details und Designüberlegungen in Abschnitt 9 von
-[`docs/CBKS_SPEC_v1.2.md`](./docs/CBKS_SPEC_v1.2.md). Die Plan- und
-Spec-Dokumente unter [`docs/superpowers/`](./docs/superpowers/) dokumentieren,
-wie die einzelnen Ausbaustufen entstanden sind.
+[`docs/CBKS_SPEC_v1.2.md`](./docs/CBKS_SPEC_v1.2.md).
 
 ## Mitwirken
 
